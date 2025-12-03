@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Expeditions - К2 (Чогори) шыңы</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Стили из основного сайта остаются полностью */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0; color: #333; line-height: 1.6;
+        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        header {
+            background: #2c3e50; color: white; padding: 1rem 0;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo h1 { font-size: 1.8rem; font-weight: bold; color: white; }
+        .logo i { font-size: 2rem; color: #e74c3c; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; padding: 0.5rem 0; }
+        nav a:hover { color: #e74c3c; }
+        .auth-buttons { display: flex; gap: 1rem; }
+        .btn {
+            padding: 0.5rem 1.2rem; border-radius: 5px; font-weight: 600;
+            cursor: pointer; border: none; transition: all 0.3s ease;
+        }
+        .btn-outline {
+            background: transparent; border: 2px solid #2c3e50; color: #2c3e50;
+        }
+        .btn-outline:hover { background: #2c3e50; color: white; transform: scale(1.05); }
+        .btn-primary { background: #e74c3c; color: white; }
+        .btn-primary:hover {
+            background: #c0392b; transform: scale(1.05);
+            filter: brightness(120%) drop-shadow(0 5px 15px rgba(231, 76, 60, 0.4));
+        }
+        
+        /* Специфичные для страницы стили */
+        .mountain-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://trendymen.ru/images/article1/125532/prev1125532.jpg');
+            background-size: cover; background-position: center;
+            color: white; padding: 8rem 0; text-align: center; margin-bottom: 3rem;
+        }
+        .mountain-hero h1 {
+            font-size: 3.5rem; margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+        .mountain-hero .subtitle {
+            font-size: 1.5rem; max-width: 800px; margin: 0 auto;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .mountain-content {
+            background: white; padding: 3rem; border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 3rem;
+        }
+        .fact-box {
+            background: #f8f9fa; border-left: 4px solid #2c3e50; /* Синий акцент для К2 */
+            padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+        }
+        .info-card {
+            border: 1px solid #ddd; border-radius: 10px; padding: 1.5rem;
+            margin: 1rem 0; transition: all 0.3s ease;
+        }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .stat-number {
+            font-size: 2.5rem; font-weight: bold; color: #2c3e50; /* Синий для К2 */
+            display: block; margin-bottom: 0.5rem;
+        }
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; margin: 2rem 0;
+        }
+        .gallery-item { border-radius: 10px; overflow: hidden; height: 250px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .facts-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .facts-table th, .facts-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .facts-table th { background-color: #2c3e50; color: white; }
+        .facts-table tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        footer {
+            background: #2c3e50; color: white; padding: 3rem 0 1.5rem; margin-top: 4rem;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .copyright {
+            text-align: center; padding-top: 1.5rem; border-top: 1px solid #34495e; color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .mountain-hero h1 { font-size: 2.5rem; }
+            .mountain-content { padding: 1.5rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <h1>Summit Expeditions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Басты бет</a></li>
+                    <li><a href="index.html#mountains">Шыңдар</a></li>
+                    <li><a href="index.html#tours">Экспедициялар</a></li>
+                    <li><a href="index.html#registration">Тіркелу</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Кіру</button>
+                <button class="btn btn-primary">Тіркелу</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция для К2 -->
+    <section class="mountain-hero" data-aos="fade-down" data-aos-duration="1500">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown animate__slow">К2 (Чогори)</h1>
+            <p class="subtitle animate__animated animate__fadeInUp animate__slow animate__delay-1s">
+                "Дикая гора" - әлемдегі ең қиын және қауіпті сегіз мыңдық[citation:1][citation:2]
+            </p>
+            <div class="mt-4">
+                <span class="badge bg-primary fs-5 animate__animated animate__pulse animate__infinite animate__slower">8611 м</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Быстрые факты -->
+        <section class="mountain-content" data-aos="fade-up">
+            <h2 class="mb-4 border-bottom pb-2">Негізгі ақпарат</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-mountain text-primary me-2"></i>Биіктігі</h4>
+                        <p><strong>8611 метр[citation:1]</strong> - Жер шарындағы ең биік екінші нүкте</p>
+                        <p>К2 Әлемдегі ең солтүстікте орналасқан сегіз мыңдық[citation:1].</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-map-marker-alt text-primary me-2"></i>Орналасқан жері</h4>
+                        <p><strong>Пакистан мен Қытай шекарасында (Каракорум)[citation:1][citation:5]</strong></p>
+                        <p>К2 Гималайлардың солтүстік-батысындағы Балторо-Музтаг жотасында орналасқан[citation:1].</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box animate__animated animate__fadeInLeft">
+                <h4><i class="fas fa-skull-crossbones me-2"></i>Атақты атаулар</h4>
+                <p>К2-ді альпинистер "Дикая гора" (Savage Mountain) және "Гора-убийца" деп атайды[citation:1][citation:2]. Оның табиғаты өте қатал, бұл өте жоғары өлім-жітім коэффициентінен (шамамен 23%) көрінеді[citation:5].</p>
+            </div>
+
+            <!-- Таблица -->
+            <h3 class="mt-5 mb-3">Техникалық сипаттамалар</h3>
+            <table class="facts-table">
+                <tr><th>Сипаттама</th><th>Мәлімет</th><th>Дереккөз</th></tr>
+                <tr><td>Негізгі атаулары</td><td>К2, Чогори, Дапсанг, Годуин-Остен[citation:1]</td><td></td></tr>
+                <tr><td>Биіктігі</td><td>8611 м (көбінесе қолданылады)[citation:1]</td><td></td></tr>
+                <tr><td>Алғашқы жетістік</td><td>31 шілде 1954 (Лино Лачеделли және Акилле Компаньони)[citation:1][citation:2]</td><td></td></tr>
+                <tr><td>Атауының шығу тегі</td><td>"K" әліпбиі - "Каракорум" сөзінен, "2" саны - осы тау жүйесіндегі екінші жоғарғы нүкте ретіндегі орнынан[citation:3][citation:9]</td><td></td></tr>
+                <tr><td>Тау жүйесі</td><td>Каракорум[citation:1]</td><td></td></tr>
+            </table>
+        </section>
+
+        <!-- История и восхождения -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="mb-4 border-bottom pb-2">Тарихы және жетістіктер</h2>
+            
+            <div class="row">
+                <div class="col-md-4 text-center" data-aos="zoom-in">
+                    <div class="stat-number">1856</div>
+                    <p>Британдық топографтар тарапынан ашылды және "К2" деп белгіленді[citation:1][citation:5]</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number">1954</div>
+                    <p>Алғашқы сәтті шыңға шығу (Ардито Дезионың итальяндық экспедициясы)[citation:1][citation:2]</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number">~400</div>
+                    <p>Сәтті шыңға шығу саны (2025 жылға дейін, Эверестпен салыстырғанда өте аз)[citation:5]</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-female text-primary me-2"></i>Алғашқы әйел альпинист</h4>
+                        <p><strong>Ванда Руткевич</strong> (Польша) 1986 жылы К2 шыңына шыққан алғашқы әйел болды[citation:1][citation:2].</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-snowflake text-primary me-2"></i>Қысқа алғашқы жетістік</h4>
+                        <p>К2 — қыс мезгілінде бағындырылған соңғы сегіз мыңдық болды[citation:1]. Бұл тарихи жетістік 2021 жылдың 16 қаңтарында непалдық команда орындады[citation:2].</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box mt-4 animate__animated animate__fadeInRight animate__delay-1s">
+                <h4><i class="fas fa-trophy text-warning me-2"></i>Жылдамдық рекорды</h4>
+                <p>Нирмал Пурджа 2021 жылы К2-нің негізгі лагерінен шыңға дейін тек <strong>20 сағатта</strong> шығып, абсолюттік жылдамдық рекордын орнатты[citation:2].</p>
+            </div>
+        </section>
+
+        <!-- Маршруты, сложность, экспедиции -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="mb-4 border-bottom pb-2">Қиындықтар, Маршруттар және Экспедициялар</h2>
+            
+            <div class="alert alert-danger" role="alert">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Ең қауіпті шың!</h5>
+                <p>К2 көтерілу үшін әлемдегі ең қиын сегіз мыңдық деп саналады[citation:2][citation:7]. Сәтті көтерілудің өлім-жітім коэффициенті шамамен 23% құрайды, яғни әрбір төртінші альпинист қаза табады[citation:5]. "Бутылочное горлышко" деп аталатын тар өткел 8200 м биіктікте орналасқан және үнемі қар көшкіні қаупі бар[citation:5].</p>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h4>Негізгі маршруттар</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Абруцци кырқасы (Оңтүстік-Шығыс)</strong></span>
+                            <span class="badge bg-success rounded-pill">Негізгі</span>
+                        </li>
+                        <li class="list-group-item">• 1954 жылғы алғашқы жеңіс жолы[citation:1]</li>
+                        <li class="list-group-item">• "Сиқырлы желі" деп аталатын өте қиын мұздық бөлігі бар[citation:2]</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Солтүстік кырқасы</strong></span>
+                            <span class="badge bg-primary rounded-pill">Сирек</span>
+                        </li>
+                        <li class="list-group-item">• Өте техникалық және саяси шектеулерге байланысты сирек пайдаланылады[citation:2]</li>
+                        <li class="list-group-item">• Солтүстік беткейі әлі де жеңілмеген[citation:2]</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Экспедиция туралы фактілер</h4>
+                    <div class="info-card">
+                        <p><strong>Ұзақтығы:</strong> 2 айдан астам</p>
+                        <p><strong>Құны:</strong> $55,000+ (Эверестке қарағанда қымбат)[citation:2]</p>
+                        <p><strong>Маусым:</strong> Шілде-тамыз (ең қолайлы уақыт)[citation:1]</p>
+                        <p><strong>Техникалық деңгей:</strong> Өте жоғары, барлық маршруттар 5Б категориясынан төмен емес[citation:2]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Цены на экспедиции -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white"><h5>Толық экспедиция</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title">$55,000+</h3>
+                            <p class="card-text">Шыңға дейін жету, тәжірибелі гидтер, оттегі, логистика</p>
+                            <p><small>2+ ай, экстрим қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-success text-white"><h5>Негізгі лагерге треккинг</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title">$3,200+</h3>
+                            <p class="card-text">Конкордияға дейін (5100 м) көп күндік треккинг[citation:4][citation:6]</p>
+                            <p><small>18-20 күн, жоғары қиындық[citation:4][citation:6]</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-info text-white"><h5>Альпинизм курстары</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title">$10,000+</h3>
+                            <p class="card-text">К2 аймағындағы техникалық дайындық және акклиматизация</p>
+                            <p><small>1 ай, орташа және жоғары деңгей</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="mb-4 border-bottom pb-2">К2 галереясы</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://trendymen.ru/images/article1/125532/prev1125532.jpg" alt="К2 көрінісі">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://tecckom.ru/img/content/b87a4bf88520b201dd2472467e7e0783_1548686885.jpeg" alt="К2 экспедициясы">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.himalayanmagictreks.com/public/uploads/makalu-expedition.jpg" alt="Каракорум ландшафты">
+                </div>
+            </div>
+            <p class="text-center mt-3"><em>"Эверестте сіз биіктікпен, ал К2-де таудың өзімен күрессесіз" - альпинистердің айтуы[citation:2].</em></p>
+        </section>
+
+        <!-- Кнопка возврата -->
+        <div class="text-center my-5" data-aos="fade-up">
+            <a href="index.html#mountains" class="btn btn-outline btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Барлық шыңдар тізіміне оралу
+            </a>
+            <button class="btn btn-primary btn-lg ms-3" onclick="bookK2Expedition()">
+                <i class="fas fa-calendar-check me-2"></i>Бұл экспедицияны брондау
+            </button>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Summit Expeditions</h3>
+                    <p>Әлемнің ең биік және қиын шыңдарына экспедициялар ұйымдастыру. Қауіпсіздік, кәсібилік және есте қаларлық әсерлер.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/exmounture?igsh=MWdiMjFjNzMwOHJlMA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/MountExpeds"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/@everestexpedi?si=vF6ERp8iY7CpkGNv"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/Expedition_mountain"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Біздің экспедициялар</h3>
+                    <ul>
+                        <li><a href="everest.html">Эверест</a></li>
+                        <li><a href="k2.html">К2</a></li>
+                        <li><a href="kangchenjunga.html">Канченджанга</a></li>
+                        <li><a href="lhotse.html">Лхоцзе</a></li>
+                        <li><a href="makalu.html">Макалу</a></li>
+                        <li><a href="cho-oyu.html">Чо-Ойю</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Алматы, Альпинистер көш., 15</li>
+                        <li><i class="fas fa-phone"></i> +7 (777) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@summit-expeditions.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Summit Expeditions. Барлық құқықтар қорғалған. | Сайт авторы: Кайраткызы Аделя</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+        gsap.from(".mountain-hero h1", {duration: 2, y: -100, opacity: 0, ease: "power3.out"});
+        gsap.from(".mountain-hero .subtitle", {duration: 2, y: 100, opacity: 0, delay: 0.5, ease: "power3.out"});
+        gsap.utils.toArray('.fact-box').forEach((box, i) => {
+            gsap.from(box, {
+                scrollTrigger: { trigger: box, start: "top 80%", toggleActions: "play none none reverse" },
+                x: i % 2 === 0 ? -50 : 50, opacity: 0, duration: 1
+            });
+        });
+
+        function bookK2Expedition() {
+            const name = prompt("К2 экспедициясын брондау үшін атыңызды енгізіңіз:");
+            if (name) {
+                alert(`Рахмет, ${name}! Сіз К2 экспедициясын таңдадыңыз. Бұл - ең қиын таңдау. Біз сізбен жақын арада хабарласамыз.`);
+                window.location.href = "index.html#registration";
+            }
+        }
+
+        setTimeout(() => {
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-info alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            alertBox.style.zIndex = '9999';
+            alertBox.innerHTML = `
+                <strong><i class="fas fa-mountain me-2"></i>К2 парақшасына қош келдіңіз!</strong>
+                Ескерту: бұл - әлемдегі ең қауіпті шың.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertBox);
+        }, 1000);
+    </script>
+</body>
+</html>

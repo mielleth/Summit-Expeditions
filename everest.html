@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Expeditions - Эверест шыңы</title>
+    
+    <!-- Подключение всех стилей с главной страницы -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Стили с главной страницы (можно вынести в отдельный файл) -->
+    <style>
+        /* Все стили с вашего главного сайта здесь */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e74c3c;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2c3e50;
+            color: #2c3e50;
+        }
+
+        .btn-outline:hover {
+            background: #2c3e50;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+            filter: brightness(120%) drop-shadow(0 5px 15px rgba(231, 76, 60, 0.4));
+        }
+
+        /* Hero Section для страницы горы */
+        .mountain-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://cdn2.tu-tu.ru/image/pagetree_node_data/1/2580b88a3b5fb92e21b81bf5a176134d/');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .mountain-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+
+        .mountain-hero .subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Контент страницы */
+        .mountain-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .fact-box {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Таблица фактов */
+        .facts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .facts-table th, .facts-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .facts-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .facts-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Футер */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #34495e;
+            color: #ddd;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .mountain-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mountain-content {
+                padding: 1.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка (как на главной) -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <h1>Summit Expeditions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Басты бет</a></li>
+                    <li><a href="index.html#mountains">Шыңдар</a></li>
+                    <li><a href="index.html#tours">Экспедициялар</a></li>
+                    <li><a href="index.html#registration">Тіркелу</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Кіру</button>
+                <button class="btn btn-primary">Тіркелу</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция для Эвереста -->
+    <section class="mountain-hero" data-aos="fade-down" data-aos-duration="1500">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown animate__slow">Эверест (Джомолунгма)</h1>
+            <p class="subtitle animate__animated animate__fadeInUp animate__slow animate__delay-1s">
+                Жер шарының ең биік шыңы - "Әлемнің шаңырағы"
+            </p>
+            <div class="mt-4">
+                <span class="badge bg-danger fs-5 animate__animated animate__pulse animate__infinite animate__slower">8848.86 м[citation:1]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Быстрые факты -->
+        <section class="mountain-content" data-aos="fade-up">
+            <h2 class="mb-4 border-bottom pb-2">Негізгі ақпарат</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-mountain text-danger me-2"></i>Биіктігі</h4>
+                        <p><strong>8848.86 метр[citation:1]</strong> - Жер шарындағы ең биік нүкте</p>
+                        <p>Тектоникалық плиталардың ығысуы салдарынан Эверест әр жыл сайын бірнеше миллиметрге өседі[citation:7].</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-map-marker-alt text-danger me-2"></i>Орналасқан жері</h4>
+                        <p><strong>Непал мен Қытай шекарасында[citation:2]</strong></p>
+                        <p>Гималай тауларының Махалангур-Химал жотасында орналасқан[citation:1]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box animate__animated animate__fadeInLeft">
+                <h4><i class="fas fa-lightbulb text-warning me-2"></i>Ыстық факт</h4>
+                <p>Эверест шыңындағы тау жыныстары бұрын ежелгі Тетис теңізінің түбінде болған. Шыңда теңіз әктасының қабаттары табылған[citation:7]!</p>
+            </div>
+
+            <!-- Таблица с ключевой информацией -->
+            <h3 class="mt-5 mb-3">Техникалық сипаттамалар</h3>
+            <table class="facts-table">
+                <tr>
+                    <th>Сипаттама</th>
+                    <th>Мәлімет</th>
+                    <th>Дереккөз</th>
+                </tr>
+                <tr>
+                    <td>Атаулары</td>
+                    <td>Эверест, Джомолунгма, Сагарматха, Чомолангма</td>
+                    <td>[citation:1][citation:3]</td>
+                </tr>
+                <tr>
+                    <td>Биіктігі</td>
+                    <td>8848.86 м (2020 жылғы ресми өлшем)</td>
+                    <td>[citation:1]</td>
+                </tr>
+                <tr>
+                    <td>Алғашқы жетістік</td>
+                    <td>29 мамыр 1953 (Тенцинг Норгей және Эдмунд Хиллари)[citation:1]</td>
+                    <td>[citation:1][citation:7]</td>
+                </tr>
+                <tr>
+                    <td>Биіктік атауы</td>
+                    <td>Тибет тілінде "Джомолунгма" - "Әлемнің Құдай-Анасы"[citation:3]</td>
+                    <td>[citation:3]</td>
+                </tr>
+                <tr>
+                    <td>Тау жүйесі</td>
+                    <td>Гималай, Махалангур-Химал жотасы[citation:1]</td>
+                    <td>[citation:1]</td>
+                </tr>
+                <tr>
+                    <td>Жасы</td>
+                    <td>50-60 миллион жыл[citation:8]</td>
+                    <td>[citation:8]</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- История и восхождения -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="mb-4 border-bottom pb-2">Тарихы және жетістіктер</h2>
+            
+            <div class="row">
+                <div class="col-md-4 text-center" data-aos="zoom-in">
+                    <div class="stat-number">1852</div>
+                    <p>Жер шарының ең биік шыңы ретінде алғаш ресми түрде анықталды[citation:1]</p>
+                </div>
+                
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number">1953</div>
+                    <p>Алғашқы сәтті шыңға шығу (Тенцинг Норгей және Эдмунд Хиллари)[citation:1]</p>
+                </div>
+                
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number">12,000+</div>
+                    <p>Сәтті шыңға шығу саны (2024 жылға дейін)[citation:1]</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-history text-danger me-2"></i>Атау тарихы</h4>
+                        <p>Эверест атауы британдық геодезист <strong>сэр Джордж Эвересттің</strong> құрметіне берілген[citation:2].</p>
+                        <p>Бұрын шың <strong>"Пик XV"</strong> деп аталған[citation:7].</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-female text-danger me-2"></i>Алғашқы әйел альпинист</h4>
+                        <p><strong>Дзюнко Табэй</strong> (Жапония) 1975 жылы Эверест шыңына шыққан алғашқы әйел болды[citation:7].</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка с рекордом -->
+            <div class="fact-box mt-4 animate__animated animate__fadeInRight animate__delay-1s">
+                <h4><i class="fas fa-trophy text-warning me-2"></i>Рекорд</h4>
+                <p>Шерпа <strong>Ками Рита</strong> Эверестке 28 рет шығып, рекорд орнатқан[citation:7]!</p>
+            </div>
+        </section>
+
+        <!-- Маршруты и экспедиции -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="mb-4 border-bottom pb-2">Экспедициялар және маршруттар</h2>
+            
+            <div class="alert alert-info" role="alert">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Маңызды!</h5>
+                <p>Эверестке көтерілу өте қауіпті: 300-ден астам адам қаза тапқан, 200-ден астам дене тауда қалған[citation:2].</p>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h4>Негізгі маршруттар</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Оңтүстік-Шығыс жотасы</strong> (Непал)</span>
+                            <span class="badge bg-success rounded-pill">Негізгі</span>
+                        </li>
+                        <li class="list-group-item">• 1953 жылы алғашқы экспедиция жолы[citation:8]</li>
+                        <li class="list-group-item">• Хумбу мұздық құлауынан өту керек</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Солтүстік жотасы</strong> (Тибет)</span>
+                            <span class="badge bg-primary rounded-pill">Альтернатива</span>
+                        </li>
+                        <li class="list-group-item">• 1960 жылы алғашқы қытай экспедициясы[citation:8]</li>
+                        <li class="list-group-item">• Базалық лагерге дейін автомобильмен жетуге болады</li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4>Экспедиция туралы фактілер</h4>
+                    <div class="info-card">
+                        <p><strong>Ұзақтығы:</strong> 2 ай (акклиматизациямен бірге)[citation:6]</p>
+                        <p><strong>Құны:</strong> $40,000 - $100,000[citation:8]</p>
+                        <p><strong>Маусым:</strong> Мамыр (ең қолайлы уақыт)[citation:6]</p>
+                        <p><strong>Оттегі:</strong> Көптеген альпинистер оттегі баллондарын қолданады[citation:8]</p>
+                        <p><strong>Жыл сайынғы тырысулар:</strong> 800 адам[citation:6]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Цены на экспедиции -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5>Толық экспедиция</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">$65,000+</h3>
+                            <p class="card-text">Шыңға дейін жету, гидтер, жабдық, логистика</p>
+                            <p><small>2 ай, экстрим қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5>Базалық лагерге</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">$3,500+</h3>
+                            <p class="card-text">5300 м биіктіктегі базалық лагерге дейін треккинг</p>
+                            <p><small>9-10 күн, орташа қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-info text-white">
+                            <h5>Туристік тур</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">$1,800+</h3>
+                            <p class="card-text">Вертолёттік экскурсия, фотосессия, тау көріністері</p>
+                            <p><small>1 апта, жеңіл</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="mb-4 border-bottom pb-2">Эверест галереясы</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://cdn2.tu-tu.ru/image/pagetree_node_data/1/2580b88a3b5fb92e21b81bf5a176134d/" 
+                         alt="Эверест көрінісі" class="img-fluid">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://files.cdn-files-a.com/uploads/2850496/2000_5ed3c1d25bb6f.jpg" 
+                         alt="Экспедиция Эвересте" class="img-fluid">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.visit2nepal.com/public/uploads/lhotse-expedition.jpg" 
+                         alt="Тау ландшафты" class="img-fluid">
+                </div>
+            </div>
+            
+            <p class="text-center mt-3"><em>Эверест - тек қана биіктік емес, сонымен бірге адамның шыдамдылығы мен ерлігінің символы[citation:3].</em></p>
+        </section>
+
+        <!-- Кнопка возврата -->
+        <div class="text-center my-5" data-aos="fade-up">
+            <a href="index.html#mountains" class="btn btn-primary btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Барлық шыңдар тізіміне оралу
+            </a>
+            <button class="btn btn-danger btn-lg ms-3" onclick="bookEverestExpedition()">
+                <i class="fas fa-calendar-check me-2"></i>Бұл экспедицияны брондау
+            </button>
+        </div>
+    </main>
+
+    <!-- Футер (как на главной) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Summit Expeditions</h3>
+                    <p>Әлемнің ең биік шыңдарына экспедициялар ұйымдастыру. Қауіпсіздік, кәсібилік және есте қаларлық әсерлер.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/exmounture?igsh=MWdiMjFjNzMwOHJlMA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/MountExpeds"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/@everestexpedi?si=vF6ERp8iY7CpkGNv"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/Expedition_mountain"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Біздің экспедициялар</h3>
+                    <ul>
+                        <li><a href="everest.html">Эверест</a></li>
+                        <li><a href="k2.html">К2</a></li>
+                        <li><a href="kangchenjunga.html">Канченджанга</a></li>
+                        <li><a href="lhotse.html">Лхоцзе</a></li>
+                        <li><a href="makalu.html">Макалу</a></li>  
+                        <li><a href="cho-oyu.html">Чо-Ойю</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Алматы, Альпинистер көш., 15</li>
+                        <li><i class="fas fa-phone"></i> +7 (777) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@summit-expeditions.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Summit Expeditions. Барлық құқықтар қорғалған. | Сайт авторы: Кайраткызы Аделя</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Инициализация AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // GSAP анимации для элементов
+        gsap.from(".mountain-hero h1", {duration: 2, y: -100, opacity: 0, ease: "power3.out"});
+        gsap.from(".mountain-hero .subtitle", {duration: 2, y: 100, opacity: 0, delay: 0.5, ease: "power3.out"});
+        
+        // Анимация для факт-боксов при скролле
+        gsap.utils.toArray('.fact-box').forEach((box, i) => {
+            gsap.from(box, {
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                x: i % 2 === 0 ? -50 : 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+
+        // Функция бронирования
+        function bookEverestExpedition() {
+            const name = prompt("Эверест экспедициясын брондау үшін атыңызды енгізіңіз:");
+            if (name) {
+                alert(`Рахмет, ${name}! Сіз Эверест экспедициясын таңдадыңыз. Біз сізбен жақын арада хабарласамыз.`);
+                // Перенаправление на главную страницу к форме регистрации
+                window.location.href = "index.html#registration";
+            }
+        }
+
+        // Показ приветственного алерта
+        setTimeout(() => {
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-info alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            alertBox.style.zIndex = '9999';
+            alertBox.innerHTML = `
+                <strong><i class="fas fa-mountain me-2"></i>Эверест парақшасына қош келдіңіз!</strong>
+                Бұл - Жер шарының ең биік шыңы туралы толық ақпарат.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertBox);
+        }, 1000);
+    </script>
+</body>
+</html>

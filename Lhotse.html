@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Expeditions - Лхоцзе шыңы</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f0f0f0; color: #333; line-height: 1.6; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        header {
+            background: #2c3e50; color: white; padding: 1rem 0;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo h1 { font-size: 1.8rem; font-weight: bold; color: white; }
+        .logo i { font-size: 2rem; color: #e74c3c; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; padding: 0.5rem 0; }
+        nav a:hover { color: #e74c3c; }
+        .auth-buttons { display: flex; gap: 1rem; }
+        .btn {
+            padding: 0.5rem 1.2rem; border-radius: 5px; font-weight: 600;
+            cursor: pointer; border: none; transition: all 0.3s ease;
+        }
+        .btn-outline {
+            background: transparent; border: 2px solid #2c3e50; color: #2c3e50;
+        }
+        .btn-outline:hover { background: #2c3e50; color: white; transform: scale(1.05); }
+        .btn-primary { background: #9b59b6; color: white; } /* Фиолетовый для Лхоцзе */
+        .btn-primary:hover {
+            background: #8e44ad; transform: scale(1.05);
+            filter: brightness(120%) drop-shadow(0 5px 15px rgba(155, 89, 182, 0.4));
+        }
+        
+        /* Специфичные стили для страницы */
+        .mountain-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://peakbaggerblobs.blob.core.windows.net/pbphoto/p3244L.jpg');
+            background-size: cover; background-position: center;
+            color: white; padding: 8rem 0; text-align: center; margin-bottom: 3rem;
+        }
+        .mountain-hero h1 {
+            font-size: 3.5rem; margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+        .mountain-hero .subtitle {
+            font-size: 1.5rem; max-width: 800px; margin: 0 auto;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .mountain-content {
+            background: white; padding: 3rem; border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 3rem;
+        }
+        .fact-box {
+            background: #f8f9fa; border-left: 4px solid #9b59b6;
+            padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+        }
+        .info-card {
+            border: 1px solid #ddd; border-radius: 10px; padding: 1.5rem;
+            margin: 1rem 0; transition: all 0.3s ease;
+        }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .stat-number {
+            font-size: 2.5rem; font-weight: bold; color: #9b59b6;
+            display: block; margin-bottom: 0.5rem;
+        }
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; margin: 2rem 0;
+        }
+        .gallery-item { border-radius: 10px; overflow: hidden; height: 250px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .facts-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .facts-table th, .facts-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .facts-table th { background-color: #2c3e50; color: white; }
+        .facts-table tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        footer {
+            background: #2c3e50; color: white; padding: 3rem 0 1.5rem; margin-top: 4rem;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .copyright {
+            text-align: center; padding-top: 1.5rem; border-top: 1px solid #34495e; color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .mountain-hero h1 { font-size: 2.5rem; }
+            .mountain-content { padding: 1.5rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <h1>Summit Expeditions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Басты бет</a></li>
+                    <li><a href="index.html#mountains">Шыңдар</a></li>
+                    <li><a href="index.html#tours">Экспедициялар</a></li>
+                    <li><a href="index.html#registration">Тіркелу</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="showLoginModal()">Кіру</button>
+                <button class="btn btn-primary" onclick="showRegisterModal()">Тіркелу</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="mountain-hero" data-aos="fade-down" data-aos-duration="1500">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown animate__slow">Лхоцзе</h1>
+            <p class="subtitle animate__animated animate__fadeInUp animate__slow animate__delay-1s">
+                "Құрметті орын" - Эвересттің іргелес және әлемнің төртінші ең биік шыңы
+            </p>
+            <div class="mt-4">
+                <span class="badge bg-purple fs-5 animate__animated animate__pulse animate__infinite animate__slower" style="background-color: #9b59b6!important;">8516 м</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Быстрые факты -->
+        <section class="mountain-content" data-aos="fade-up">
+            <h2 class="mb-4 border-bottom pb-2">Негізгі ақпарат</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-mountain text-purple me-2"></i>Биіктігі</h4>
+                        <p><strong>8516 метр</strong> - Жер шарындағы ең биік төртінші нүкте</p>
+                        <p>Лхоцзе үш негізгі шыңнан тұрады: Лхоцзе Негізгі (8516 м), Лхоцзе Шарқы (8413 м) және Лхоцзе Орта (8414 м).</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-map-marker-alt text-purple me-2"></i>Орналасқан жері</h4>
+                        <p><strong>Непал мен Қытай шекарасында</strong></p>
+                        <p>Лхоцзе Эвересттен оңтүстікке қарай 3 км қашықтықта орналасқан және онымен бірге Махалангур-Химал тау жотасының бөлігі болып табылады.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box animate__animated animate__fadeInLeft">
+                <h4><i class="fas fa-mountain text-warning me-2"></i>Атауының мағынасы</h4>
+                <p>"Лхоцзе" тибет тілінен аударғанда <strong>"Оңтүстік шың"</strong> дегенді білдіреді, өйткені ол Эвересттің оңтүстігінде орналасқан. Кейде оны "Құрметті орын" деп те аударады.</p>
+            </div>
+
+            <!-- Таблица -->
+            <h3 class="mt-5 mb-3">Техникалық сипаттамалар</h3>
+            <table class="facts-table">
+                <tr><th>Сипаттама</th><th>Мәлімет</th></tr>
+                <tr><td>Атауы</td><td>Лхоцзе (Lhotse) - "Оңтүстік шың"</td></tr>
+                <tr><td>Биіктігі</td><td>8516 м (негізгі шың)</td></tr>
+                <tr><td>Алғашқы жетістік</td><td>18 мамыр 1956 (Фриц Лухзингер және Эрнст Рейсс)</td></tr>
+                <tr><td>Ерекшелігі</td><td>Эверестпен бірге ортақ базалық лагері бар жалғыз сегіз мыңдық</td></tr>
+                <tr><td>Тау жүйесі</td><td>Гималайлар, Махалангур-Химал жотасы</td></tr>
+                <tr><td>Шыңдар саны</td><td>3 негізгі шың</td></tr>
+            </table>
+        </section>
+
+        <!-- История и восхождения -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="mb-4 border-bottom pb-2">Тарихы және жетістіктер</h2>
+            
+            <div class="row">
+                <div class="col-md-4 text-center" data-aos="zoom-in">
+                    <div class="stat-number">1956</div>
+                    <p>Алғашқы сәтті көтерілу</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number">1990</div>
+                    <p>Лхоцзе Шарқы алғаш рет бағындырылды</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number">~600</div>
+                    <p>Сәтті көтерілу саны (2025 ж.)</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-route text-purple me-2"></i>Ерекше маршрут</h4>
+                        <p>Лхоцзе - Эверестпен бірге ортақ базалық лагері бар жалғыз сегіз мыңдық. Альпинистер Эвересттің Оңтүстік базалық лагерін пайдалана алады, бұл логистиканы жеңілдетеді.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h4><i class="fas fa-female text-purple me-2"></i>Алғашқы әйел альпинист</h4>
+                        <p><strong>Ванда Руткевич</strong> (Польша) 1978 жылы Лхоцзе шыңына шыққан алғашқы әйел болды.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box mt-4 animate__animated animate__fadeInRight animate__delay-1s">
+                <h4><i class="fas fa-trophy text-warning me-2"></i>Техникалық қиындық</h4>
+                <p>Лхоцзенің <strong>Оңтүстік беті</strong> әлемдегі ең тік және техникалық тұрғыдан ең қиын тау беткейлерінің бірі болып саналады. Ол әлі де жеңілмеген жалғыз үлкен тау беткейі болып табылады.</p>
+            </div>
+        </section>
+
+        <!-- Маршруты и экспедиции -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="mb-4 border-bottom pb-2">Маршруттар және экспедициялар</h2>
+            
+            <div class="alert alert-purple" role="alert" style="background-color: #f3e6f8; border-color: #9b59b6; color: #2c3e50;">
+                <h5><i class="fas fa-exclamation-triangle me-2" style="color: #9b59b6;"></i>Техникалық қиындық</h5>
+                <p>Лхоцзе өлім-жітім коэффициенті шамамен 3% құрайды, бұл оны салыстырмалы түрде қауіпсіз сегіз мыңдықтардың бірі етеді. Дегенмен, Оңтүстік беті әлемдегі ең қиын таулық маршрут болып саналады.</p>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h4>Негізгі маршруттар</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Батыс беткейі</strong></span>
+                            <span class="badge bg-purple rounded-pill" style="background-color: #9b59b6!important;">Негізгі</span>
+                        </li>
+                        <li class="list-group-item">• 1956 жылғы алғашқы жеңіс жолы</li>
+                        <li class="list-group-item">• Эвересттің Оңтүстік базалық лагерін бөліседі</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Оңтүстік беткейі</strong></span>
+                            <span class="badge bg-danger rounded-pill">Өте қиын</span>
+                        </li>
+                        <li class="list-group-item">• Әлемдегі ең тік тау беткейі (3300 м тік құлама)</li>
+                        <li class="list-group-item">• Тек бірнеше рет бағындырылған</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Экспедиция туралы фактілер</h4>
+                    <div class="info-card">
+                        <p><strong>Ұзақтығы:</strong> 6-7 апта</p>
+                        <p><strong>Құны:</strong> $38,000 - $45,000</p>
+                        <p><strong>Маусым:</strong> Сәуір-мамыр, қыркүйек-қазан</p>
+                        <p><strong>Техникалық деңгей:</strong> Жоғары (Батыс беткейі), Экстрим (Оңтүстік беткейі)</p>
+                        <p><strong>Артықшылығы:</strong> Эверест экспедициясымен бірге ұйымдастыруға болады</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Цены на экспедиции -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header text-white" style="background-color: #9b59b6;"><h5>Толық экспедиция</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #9b59b6;">$38,000+</h3>
+                            <p class="card-text">Негізгі шыңға дейін, гидтер, оттегі, толық логистика</p>
+                            <p><small>2 ай, жоғары қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white"><h5>Қос экспедиция</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title">$70,000+</h3>
+                            <p class="card-text">Эверест пен Лхоцзеге бір маусымда көтерілу</p>
+                            <p><small>3 ай, экстрим қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-info text-white"><h5>Лхоцзе Шарқы</h5></div>
+                        <div class="card-body">
+                            <h3 class="card-title">$25,000+</h3>
+                            <p>Лхоцзе Шарқы (8413 м) шыңына экспедиция</p>
+                            <p><small>1.5 ай, жоғары қиындық</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section class="mountain-content mt-4" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="mb-4 border-bottom pb-2">Лхоцзе галереясы</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Lhotse-fromChukhungRi.jpg/500px-Lhotse-fromChukhungRi.jpg" alt="Лхоцзе көрінісі">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.montblanclines.com/cdn/shop/files/SCR-20251017-mcce.png?v=1760718726&width=1946" alt="Лхоцзе массиві">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s3.amazonaws.com/www.explorersweb.com/wp-content/uploads/2022/02/06202909/IMG_2307.jpg" alt="Лхоцзе ландшафты">
+                </div>
+            </div>
+            <p class="text-center mt-3"><em>"Лхоцзе - бұл Эвересттің көлеңкесінде тұрған даңқ, бірақ оның өзіндік сипаты бар"</em></p>
+        </section>
+
+        <!-- Кнопка возврата -->
+        <div class="text-center my-5" data-aos="fade-up">
+            <a href="index.html#mountains" class="btn btn-outline btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Барлық шыңдар тізіміне оралу
+            </a>
+            <button class="btn btn-primary btn-lg ms-3" onclick="bookLhotseExpedition()" style="background-color: #9b59b6; border-color: #9b59b6;">
+                <i class="fas fa-calendar-check me-2"></i>Бұл экспедицияны брондау
+            </button>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Summit Expeditions</h3>
+                    <p>Әлемнің ең биік және қиын шыңдарына экспедициялар ұйымдастыру. Қауіпсіздік, кәсібилік және есте қаларлық әсерлер.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/exmounture?igsh=MWdiMjFjNzMwOHJlMA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/MountExpeds"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/@everestexpedi?si=vF6ERp8iY7CpkGNv"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/Expedition_mountain"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Біздің экспедициялар</h3>
+                    <ul>
+                        <li><a href="everest.html">Эверест</a></li>
+                        <li><a href="k2.html">К2</a></li>
+                        <li><a href="Kanchenjunga.html">Канченджанга</a></li>
+                        <li><a href="Lhotse.html">Лхоцзе</a></li>
+                        <li><a href="Makalu.html">Макалу</a></li>
+                        <li><a href="Cho_Oyu.html">Чо-Ойю</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Алматы, Альпинистер көш., 15</li>
+                        <li><i class="fas fa-phone"></i> +7 (777) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@summit-expeditions.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Summit Expeditions. Барлық құқықтар қорғалған. | Сайт авторы: Кайраткызы Аделя</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Инициализация AOS
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+        
+        // GSAP анимации
+        gsap.from(".mountain-hero h1", {duration: 2, y: -100, opacity: 0, ease: "power3.out"});
+        gsap.from(".mountain-hero .subtitle", {duration: 2, y: 100, opacity: 0, delay: 0.5, ease: "power3.out"});
+        
+        // Анимация для факт-боксов
+        gsap.utils.toArray('.fact-box').forEach((box, i) => {
+            gsap.from(box, {
+                scrollTrigger: { trigger: box, start: "top 80%", toggleActions: "play none none reverse" },
+                x: i % 2 === 0 ? -50 : 50, opacity: 0, duration: 1
+            });
+        });
+        
+        // Функция бронирования
+        function bookLhotseExpedition() {
+            const name = prompt("Лхоцзе экспедициясын брондау үшін атыңызды енгізіңіз:");
+            if (name) {
+                alert(`Рахмет, ${name}! Сіз Лхоцзе экспедициясын таңдадыңыз. Бұл - Эвересттің көршісін бағындыру. Біз сізбен жақын арада хабарласамыз.`);
+                window.location.href = "index.html#registration";
+            }
+        }
+        
+        // Функции для модальных окон
+        function showLoginModal() {
+            alert('Кіру формасы жасалуда. Өтініш, кейінірек кіріңіз.');
+        }
+        
+        function showRegisterModal() {
+            alert('Тіркелу формасы жасалуда. Өтініш, кейінірек тіркеліңіз.');
+        }
+        
+        // Приветственное сообщение
+        setTimeout(() => {
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-purple alert-dismissible fade show position-fixed top-0 end-0 m-3';
+            alertBox.style.zIndex = '9999';
+            alertBox.style.backgroundColor = '#9b59b6';
+            alertBox.style.color = 'white';
+            alertBox.innerHTML = `
+                <strong><i class="fas fa-mountain me-2"></i>Лхоцзе парақшасына қош келдіңіз!</strong>
+                Еске салайық: бұл Эвересттің ең жақын көршісі.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertBox);
+        }, 1000);
+    </script>
+</body>
+</html>
